@@ -1,0 +1,21 @@
+schemaVersion: "2.0.0"
+metadata:
+  name: "devfile example"
+  version: "1.0.0"
+projects:
+  - name: "my-project"
+    git:
+      remotes:
+        origin: "https://github.com/kokosnuss/terraform-hashicups-techdays"
+      checkoutFrom:
+        revision: "main"
+        remote: origin
+components:
+  - name: "mycontainer"
+    container:
+      image: "image-registry.openshift-image-registry.svc.cluster.local:5000/xce35d1-devspaces/ocp-devspace-terraform:dev"
+      memoryLimit: "1024M"
+      mountSources: true
+  - name: "Registry"
+    kubernetes:
+      uri: "https://registry.terraform.io/"
